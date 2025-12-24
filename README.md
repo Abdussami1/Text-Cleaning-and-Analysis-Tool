@@ -5,11 +5,14 @@ A FastAPI-based API for cleaning text and performing basic text analysis, useful
 ---
 
 ## 🚀 Features
-- Convert text to lowercase
 - Remove special characters and punctuation
+- Tokenize text into words
+- Normalize text (lowercasing & trimming)
+- Remove empty tokens
 - Count total words
 - Count unique words
 - Generate word frequency statistics
+- Modular text-processing pipeline
 - Auto-generated API documentation (Swagger & ReDoc)
 
 ---
@@ -21,6 +24,17 @@ A FastAPI-based API for cleaning text and performing basic text analysis, useful
 - Uvicorn
 
 ---
+## 📁 Project Structure
+
+```text
+.
+├── main.py          # FastAPI application
+├── pipeline.py      # Text cleaning & processing pipeline
+├── requirements.txt
+├── README.md
+```
+
+---
 
 ## 📡 API Endpoint
 
@@ -28,19 +42,17 @@ A FastAPI-based API for cleaning text and performing basic text analysis, useful
 
 Cleans the input text and returns analysis results.
 
-#### Query Parameter
-| Name | Type | Description |
-|------|------|-------------|
-| `Text` | string | Raw input text |
-
-#### Example Request
+### Request Body
 
 ```json
-
-POST /clean-text/?Text=AI will change the world! AI is powerful.
-
+{
+  "text": "AI will change the world! AI is powerful."
+}
 ```
-#### Example Response
+
+
+### Example Responce
+
 ```json
 {
   "cleaned_text": "ai will change the world ai is powerful",
@@ -59,7 +71,6 @@ POST /clean-text/?Text=AI will change the world! AI is powerful.
   }
 }
 ```
-
 
 ### ▶️ How to Run
 
